@@ -8,10 +8,10 @@ $tbody = ''; //this variable will hold the body for the table
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $tbody .=
-            "<div class='card text-center' style='width: 18rem;'>
+            "<div class='card text-center me-3' style='width: 18rem;'>
             <img class='card-img-top mt-3' src='pictures/" . $row['picture'] . " 'style='height: 22vh;'>
             <div class='card-body' style='height: 40vh;'>
-                <h5 class='card-title'>" . $row['locationName'] . "</h5>
+                <h5 class='card-title' style='font-weight: bold;'>" . $row['locationName'] . "</h5>
                 <p class='card-text'>" . $row['description'] . "</p>
             </div>
             <ul class='list-group list-group-flush'>
@@ -23,7 +23,7 @@ if (mysqli_num_rows($result)  > 0) {
                 <a href='update.php?trekID=" . $row['trekID'] . "' class='btn btn-success w-50 mb-1'>Update</a><br/>
                 <a href='delete.php?trekID=" . $row['trekID'] . "' class='btn btn-danger w-50 mb-1'>Delete</a>
             </div>
-        </div>";
+            </div>";
     };
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
