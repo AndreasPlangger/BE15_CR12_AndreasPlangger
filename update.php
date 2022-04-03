@@ -13,6 +13,7 @@ if ($_GET['trekID']) {
         $locationName = $data['locationName'];
         $price = $data['price'];
         $description = $data['description'];
+        $description_detail = $data['description_detail'];
         $longitude = $data['longitude'];
         $latitude = $data['latitude'];
         $region = $data['region'];
@@ -69,6 +70,10 @@ if ($_GET['trekID']) {
                     <td><input class='form-control' type="text" name="description" placeholder="Description" value="<?php echo $description ?>" /></td>
                 </tr>
                 <tr>
+                    <th>Description detailed</th>
+                    <td><input class='form-control' type="text" name="description_detail" placeholder="Description detailed" value="<?php echo $description_detail ?>" /></td>
+                </tr>
+                <tr>
                     <th>Longitude</th>
                     <td><input class='form-control' type="text" name="longitude" placeholder="Longitude" step="0.00001" min="-180" max="180" value="<?php echo $longitude ?>" /></td>
                 </tr>
@@ -99,10 +104,10 @@ if ($_GET['trekID']) {
                 </tr>
                 <tr>
                     <th>Maximum Altitude</th>
-                    <td><input class='form-control' type="number" name="max_altitude" placeholder="Max Altitude" value="<?php echo $max_Altitude ?>" /></td>
+                    <td><input class='form-control' type="number" name="max_altitude" placeholder="Max Altitude" value="<?php echo $max_altitude ?>" /></td>
                 </tr>
                 <tr>
-                    <input type="hidden" name="id" value="<?php echo $data['trekID'] ?>" />
+                    <input type="hidden" name="trekID" value="<?php echo $data['trekID'] ?>" />
 
                     <input type="hidden" name="picture" value="<?php echo $data['picture'] ?>" />
                     <td><button class="btn btn-success" type="submit">Save Changes</button></td>

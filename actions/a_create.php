@@ -13,11 +13,12 @@ if ($_POST) {
     $difficulty = $_POST['difficulty'];
     $walking_distance = $_POST['walking_distance'];
     $max_altitude = $_POST['max_altitude'];
+    $description_detail = $_POST['description_detail'];
     $uploadError = '';
     //this function exists in the service file upload.
     $picture = file_upload($_FILES['picture']);
 
-    $sql = "INSERT INTO travel_offers (locationName, price, description, longitude, latitude, picture, region, duration, difficulty, walking_distance, max_altitude) VALUES ('$locationName', $price, '$description', '$longitude', '$latitude', '$picture->fileName', '$region', $duration, '$difficulty', $walking_distance, $max_altitude)";
+    $sql = "INSERT INTO travel_offers (locationName, price, description, longitude, latitude, picture, region, duration, difficulty, walking_distance, max_altitude, description_detail) VALUES ('$locationName', $price, '$description', '$longitude', '$latitude', '$picture->fileName', '$region', $duration, '$difficulty', $walking_distance, $max_altitude, '$description_detail')";
 
     // echo ($sql);
     // exit;

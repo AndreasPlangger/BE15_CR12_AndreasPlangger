@@ -19,11 +19,6 @@ if ($_GET['trekID']) {
         $walking_distance = $data['walking_distance'];
         $max_altitude = $data['max_altitude'];
         $picture = $data['picture'];
-        $tcontent = "
-        </div>
-        <h2>" . $locationName . "</h2>
-        <h3>Description</h3>
-        <div>" . $description_detail . "</div>";
     } else {
         header("location: error.php");
     }
@@ -41,60 +36,105 @@ if ($_GET['trekID']) {
     <title>Media details</title>
     <?php require_once 'components/boot.php' ?>
     <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+        }
+
         .manageProduct {
             margin: auto;
-            width: 90%;
+            width: 100%;
+
         }
 
-        .img-thumbnail {
-            width: 70px !important;
-            height: 70px !important;
+        .card-img-top {
+            margin-bottom: 4vh !important;
+            height: 30rem;
+
         }
 
-        td {
-            text-align: center;
-            vertical-align: middle;
+        ul {
+            list-style-type: none;
         }
 
-        tr {
-            text-align: center;
+        ul li h3 {
+            margin-top: 3rem;
         }
 
-        .custom {
-            width: 135px;
+        #map {
+            height: 30rem;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 
 <body>
     <div class="manageProduct mt-3">
-        <p class='h2 text-center mt-5 mb-5'> <?= $name ?> </p>
+        <p class='h1 text-center mt-5 mb-5'> <?= $locationName ?> </p>
+        <div class="container">
+            <div class="row">
 
-
-
-        <div class="d-flex justify-content-between">
-            <div>
-                <h3>Overview</h3>
-                <ul>
-                    <li>Region: <?= $region ?></li>
-                    <li>Duration: <?= $duration ?> days</li>
-                    <li>Difficulty: <?= $difficulty ?></li>
-                    <li>Max. Altitude: <?= $max_altitude ?> metres</li>
-                    <li>Walking Distance: <?= $walking_distance ?> kilometers</li>
-                </ul>
-            </div>
-            <img src='pictures/<?= $picture ?>' class='rounded mx-auto d-block mb-3' alt='<?= $name ?>' width='650px'>
-            <div class='mb-3 d-flex justify-content-end'>
-                <a href="index.php"><button class='btn btn-md btn-success custom' type="button">Home</button></a>
+                <div class="col-sm-4">
+                    <div id="map"></div>
+                    <ul class="p-0">
+                        <li>
+                            <h3>Overview</h3>
+                        </li>
+                        <li>Region: <?= $region ?></li>
+                        <li>Duration: <?= $duration ?> days</li>
+                        <li>Difficulty: <?= $difficulty ?></li>
+                        <li>Max. Altitude: <?= $max_altitude ?> metres</li>
+                        <li>Walking Distance: <?= $walking_distance ?> kilometers</li>
+                    </ul>
+                    <div class="d-flex justify-content-beginning">
+                        <a href="index.php"><button class='btn btn-md btn-success custom' type="button">Home</button></a>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card" style="width: 48rem;">
+                        <img src='pictures/<?= $picture ?>' class='card-img-top' alt='...' width='100%'>
+                        <div class="card-body">
+                            <h3 class="card-title">Details:</h3>
+                            <p class="card-text mt-2"><?= $description_detail ?></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="w-75">
-            <tbody><?= $tcontent; ?> </tbody>
-        </div>
-
-
     </div>
+
+    <script>
+        var map;
+
+        function initMap() {
+            var <?= $locationName ?> = {
+
+                lat: <?= $latitude ?>,
+                lng: <?= $longitude ?>
+
+            };
+
+            map = new google.maps.Map(document.getElementById('map'), {
+
+                center: <?= $locationName ?>,
+                zoom: 8
+
+            });
+            var pinpoint = new google.maps.Marker({
+                position: <?= $locationName ?>,
+                map: map
+
+            });
+
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtjaD-saUZQ47PbxigOg25cvuO6_SuX3M&callback=initMap" async defer></script>
 </body>
 
 </html>

@@ -11,27 +11,25 @@ if (mysqli_num_rows($result)  > 0) {
             "<div class='card text-center me-3' style='width: 18rem;'>
             <img class='card-img-top mt-3' src='pictures/" . $row['picture'] . " 'style='height: 22vh;'>
             <div class='card-body' style='height: 40vh;'>
-                <h5 class='card-title' style='font-weight: bold;'>" . $row['locationName'] . "</h5>
-                <p class='card-text'>" . $row['description'] . "</p>
+            <h5 class='card-title' style='font-weight: bold;'>" . $row['locationName'] . "</h5>
+            <p class='card-text'>" . $row['description'] . "</p>
             </div>
             <ul class='list-group list-group-flush'>
-                <li class='list-group-item' style='font-weight: bold;'>Price:</li>
-                <li class='list-group-item'>€ " . $row['price'] . "</li>
+            <li class='list-group-item' style='font-weight: bold;'>Price:</li>
+            <li class='list-group-item'>€ " . $row['price'] . "</li>
             </ul>
             <div class='card-body'>
-                <a href='details.php?trekID=" . $row['trekID'] . "' class='btn btn-primary w-50 mb-1'>Details</a><br/>
-                <a href='update.php?trekID=" . $row['trekID'] . "' class='btn btn-success w-50 mb-1'>Update</a><br/>
-                <a href='delete.php?trekID=" . $row['trekID'] . "' class='btn btn-danger w-50 mb-1'>Delete</a>
+            <a href='details.php?trekID=" . $row['trekID'] . "' class='btn btn-primary w-50 mb-1'>Details</a><br/>
+            <a href='update.php?trekID=" . $row['trekID'] . "' class='btn btn-success w-50 mb-1'>Update</a><br/>
+            <a href='delete.php?trekID=" . $row['trekID'] . "' class='btn btn-danger w-50 mb-1'>Delete</a>
             </div>
             </div>";
     };
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
 }
-
 mysqli_close($connect);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,8 +47,12 @@ mysqli_close($connect);
             padding: 0;
             background: #f1f1f1;
             font-family: sans-serif;
+            background: url(pictures/bodybg.jpg) no-repeat center 40% fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
-
 
         .hero-image {
 
@@ -116,34 +118,23 @@ mysqli_close($connect);
             text-shadow: 0 0 10 px black;
         }
 
-        /* .btn {
-            color: #313131;
-            padding: 10px 24px;
-            font-size: 20px;
-            text-decoration: none;
-            background: #f1f1f1;
-            border-radius: 8px;
-            transition: 0.3s all;
-        } */
-
-        /* .manageProduct {
-            margin: auto;
+        .btn-outline-primary.hover {
+            background-color: #3c6ac0 !important;
+            color: white;
         }
 
-        .img-thumbnail {
-            width: 70px !important;
-            height: 70px !important;
+        .btn-primary {
+            background-color: #3c6ac0 !important;
+            color: white;
         }
 
-        td {
-            text-align: left;
-            vertical-align: middle;
-
+        .btn-lg {
+            width: 10vw;
         }
 
-        tr {
-            text-align: center;
-        } */
+        .btn {
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -151,78 +142,71 @@ mysqli_close($connect);
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container d-flex align-items-center">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
 
-            <!-- LEFT ELEMENTS -->
-            <ul class="navbar-nav">
-                <!-- LOGO -->
-
-                <!-- LINKS -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <p class="text bg-dark">Home</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <p class="text bg-dark">About us</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <p class="text bg-dark">Services</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <p class="text bg-dark">Adventures
-                        </p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- RIGHT ELEMENTS -->
-        <div class="d-flex justify-content-end">
-            <div class="row d-flex justify-content-center">
-                <!--Grid column-->
-                <div class="col-md-5 col-12">
-                    <!-- TEXT INPUT -->
-                    <div class="form-outline form-white">
-                        <input type="text" id="form5Example21" class="form-control" placeholder="Search" />
-                    </div>
-                </div>
-                <!-- SEARCH BUTTON -->
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-outline-light">
-                        <p class="text bg-dark m-0">Search</p>
-                    </button>
-                </div>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>
+    <div class="main">
+        <!-- HERO image-->
+        <div class="hero-image">
+            <div class="hero-container">
+                <h1><span>Everest</span></h1>
+                <span class="des">Travel agency</span>
+            </div>
 
-    <!-- HERO image-->
-    <div class="hero-image">
-        <div class="hero-container">
-            <h1><span>Everest</span></h1>
-            <span class="des">Travel agency</span>
         </div>
 
-    </div>
+        <!-- MIDPAGE HEADLINE -->
+        <div class="alpha d-flex align-items-center justify-content-center mt-5 mb-3">
+            <p>Current treks and expeditions:</p>
+        </div>
 
-    <!-- MIDPAGE HEADLINE -->
-    <div class="alpha d-flex align-items-center justify-content-center mt-5 mb-3">
-        <p>Current treks and expeditions:</p>
-    </div>
+        <!-- ROW AND COLUMN TEMPLATE -->
+        <div id="container" class="row justify-content-center p-5 g-4 mt-0 pt-0">
+            <tbody>
+                <?= $tbody; ?>
+            </tbody>
+        </div>
 
-    <!-- ROW AND COLUMN TEMPLATE -->
-    <div id="container" class="row justify-content-center p-5 g-4 mt-0 pt-0">
-        <tbody>
-            <?= $tbody; ?>
-        </tbody>
-    </div>
 
+        <div class='mb-3 d-flex justify-content-center'>
+            <a href="create.php"><button class=' btn btn-primary btn-lg' type="button"> Add Trek </button></a>
+        </div>
+        <div class='mb-3 d-flex justify-content-center'>
+            <a href='displayAll.php'><button class=' btn btn-primary btn-lg' type=" button"> Display all </button></a>
+        </div>
+    </div>
     <!-- FOOTER-->
     <footer class="bg-dark text-center text-white">
         <div class="container p-4">
@@ -255,31 +239,6 @@ mysqli_close($connect);
             © 2022 Copyright: Andreas Plangger
         </div>
     </footer>
-
-
-
-    <!-- <div class="manageProduct w-75 mt-3">
-        <div class='mb-3'>
-
-            <a href="create.php"><button class='btn btn-primary' type="button">Add product</button></a>
-        </div>
-        <p class='h2'>Products</p>
-
-        <table class='table table-striped'>
-            <thead class='table-success'>
-                <tr>
-
-                    <th>Picture</th>
-                    <th>Name</th>
-                    <th>price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    </div> -->
 </body>
 
 </html>

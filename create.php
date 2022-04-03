@@ -33,6 +33,10 @@
                     <td><input class='form-control' type="text" name="description" placeholder="Description" value="<?php echo $description ?>" /></td>
                 </tr>
                 <tr>
+                    <th>Description detailed</th>
+                    <td><input class='form-control' type="text" name="description_detail" placeholder="Description detailed" value="<?php echo $description_detail ?>" /></td>
+                </tr>
+                <tr>
                     <th>Longitude</th>
                     <td><input class='form-control' type="text" name="longitude" placeholder="Longitude" step="0.00001" min="-180" max="180" value="<?php echo $longitude ?>" /></td>
                 </tr>

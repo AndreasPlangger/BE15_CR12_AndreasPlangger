@@ -7,6 +7,7 @@ if ($_POST) {
     $locationName = $_POST['locationName'];
     $price = $_POST['price'];
     $description = $_POST['description'];
+    $description_detail = $_POST['description_detail'];
     $longitude = $_POST['longitude'];
     $latitude = $_POST['latitude'];
     $region = $_POST['region'];
@@ -17,15 +18,17 @@ if ($_POST) {
     //variable for upload pictures errors is initialised
     $uploadError = '';
 
-    // echo ($locationName);
+    // echo ($id);
     // exit;
 
     $picture = file_upload($_FILES['picture']); //file_upload() called  
     if ($picture->error === 0) {
         ($_POST["picture"] == "product.png") ?: unlink("../pictures/$_POST[picture]");
-        $sql = "UPDATE travel_offers SET locationName = '$locationName', price = $price, description = '$description', longitude = '$longitude', latitude =  '$latitude', region = '$region', duration = $duration, difficulty = '$difficulty', walking_distance = '$walking_distance', max_altitude = $max_altitude, picture = '$picture->fileName' WHERE trekID = {$id}";
+        $sql = "UPDATE travel_offers SET locationName = '$locationName', price = $price, description = '$description', longitude = '$longitude', latitude =  '$latitude', region = '$region', duration = $duration, difficulty = '$difficulty', walking_distance = '$walking_distance', max_altitude = $max_altitude, description_detail = '$description_detail', picture = '$picture->fileName' WHERE trekID = {$id}";
+        // echo ($sql);
+        // exit;
     } else {
-        $sql = "UPDATE travel_offers SET locationName = '$locationName', price = $price, description = '$description', longitude = '$longitude', latitude =  '$latitude', region = '$region', duration = $duration, difficulty = '$difficulty', walking_distance = '$walking_distance', max_altitude = $max_altitude WHERE trekID = {$id}";
+        $sql = "UPDATE travel_offers SET locationName = '$locationName', price = $price, description = '$description', longitude = '$longitude', latitude =  '$latitude', region = '$region', duration = $duration, difficulty = '$difficulty', walking_distance = '$walking_distance', max_altitude = $max_altitude, description_detail = '$description_detail' WHERE trekID = {$id}";
     }
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";
@@ -60,7 +63,7 @@ if ($_POST) {
         <div class="alert alert-<?php echo $class; ?>" role="alert">
             <p><?php echo ($message) ?? ''; ?></p>
             <p><?php echo ($uploadError) ?? ''; ?></p>
-            <a href='../update.php?id=<?= $id; ?>'><button class="btn btn-warning" type='button'>Back</button></a>
+            <!-- <a href='../update.php?id=<?= $id; ?>'><button class="btn btn-warning" type='button'>Back</button></a> -->
             <a href='../index.php'><button class="btn btn-success" type='button'>Home</button></a>
         </div>
     </div>
