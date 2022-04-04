@@ -211,7 +211,7 @@ mysqli_close($connect);
     <footer class="bg-dark text-center text-white">
         <div class="container p-4">
             <!-- Section: Social media -->
-            <section class="mb-4">
+            <section>
                 <!-- Facebook -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
 
@@ -235,7 +235,7 @@ mysqli_close($connect);
         <!-- Grid container -->
 
         <!-- Copyright -->
-        <div class="text-center text-white bg-dark p-3" style="font-weight: bold;">
+        <div class="text-center text-white bg-dark pb-3" style="font-weight: bold;">
             © 2022 Copyright: Andreas Plangger
         </div>
     </footer>
