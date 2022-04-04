@@ -5,7 +5,6 @@ if ($_GET['trekID']) {
     $id = $_GET['trekID'];
 
 
-
     $sql = "SELECT * FROM travel_offers WHERE trekID = {$id}";
     $result = mysqli_query($connect, $sql);
     if (mysqli_num_rows($result) == 1) {
