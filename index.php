@@ -184,7 +184,6 @@ mysqli_close($connect);
                 <h1><span>Everest</span></h1>
                 <span class="des">Travel agency</span>
             </div>
-
         </div>
 
         <!-- MIDPAGE HEADLINE -->
@@ -200,12 +199,12 @@ mysqli_close($connect);
         </div>
 
 
-        <div class='mb-3 d-flex justify-content-center'>
-            <a href="create.php"><button class=' btn btn-primary btn-lg' type="button"> Add Trek </button></a>
+        <div class='mb-5 d-flex justify-content-center'>
+            <a href="create.php"><button class=' btn btn-primary btn-lg me-5' type="button"> Add Trek </button></a>
+            <a href='displayAll.php'><button class=' btn btn-primary btn-lg me-5' type=" button"> Display all </button></a>
+            <a href='showAll.php'><button class=' btn btn-primary btn-lg' type=" button"> Show all </button></a>
         </div>
-        <div class='mb-3 d-flex justify-content-center'>
-            <a href='displayAll.php'><button class=' btn btn-primary btn-lg' type=" button"> Display all </button></a>
-        </div>
+
     </div>
     <!-- FOOTER-->
     <footer class="bg-dark text-center text-white">
