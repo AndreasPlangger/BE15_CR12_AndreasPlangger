@@ -10,7 +10,7 @@ if (mysqli_num_rows($result)  > 0) {
         $tbody .=
             "<div class='card text-center me-3' style='width: 18rem;'>
             <img class='card-img-top mt-3' src='pictures/" . $row['picture'] . " 'style='height: 22vh;'>
-            <div class='card-body' style='height: 40vh;'>
+            <div class='card-body media' style='height: 40vh;'>
             <h5 class='card-title' style='font-weight: bold;'>" . $row['locationName'] . "</h5>
             <p class='card-text'>" . $row['description'] . "</p>
             </div>
@@ -135,6 +135,43 @@ mysqli_close($connect);
         .btn {
             font-weight: 600;
         }
+
+        @media only screen and (max-width: 1330px) {
+
+            .buttons {
+                margin-bottom: 5vh !important;
+                margin-right: 0vw !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .btn-lg {
+                margin-right: 0vw !important;
+                margin-bottom: 2vh !important;
+                width: 140px;
+                height: 45px;
+            }
+
+            .media {
+                height: 50vh !important;
+            }
+        }
+
+        @media only screen and (max-width: 1200px) {
+            .hero-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+            }
+
+            @media only screen and (max-width: 375px) {
+                .media {
+                    height: 40vh !important;
+                }
+            }
+        }
     </style>
 </head>
 
@@ -198,10 +235,11 @@ mysqli_close($connect);
             </tbody>
         </div>
 
+        <!-- col-lg-9 col-md-7 col-sm-6 me-3 pe-5 ps-5 p-1 -->
 
-        <div class='mb-5 d-flex justify-content-center'>
-            <a href="create.php"><button class=' btn btn-primary btn-lg me-5' type="button"> Add Trek </button></a>
-            <a href='displayAll.php'><button class=' btn btn-primary btn-lg me-5' type=" button"> Display all </button></a>
+        <div class='buttons mb-5 d-flex justify-content-center me-3'>
+            <a href="create.php"><button class=' btn btn-primary btn-lg me-3' type="button"> Add Trek </button></a>
+            <a href='displayAll.php'><button class=' btn btn-primary btn-lg me-3' type=" button"> Display all </button></a>
             <a href='showAll.php'><button class=' btn btn-primary btn-lg' type=" button"> Show all </button></a>
         </div>
 
