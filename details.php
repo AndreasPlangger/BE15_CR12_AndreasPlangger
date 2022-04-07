@@ -109,7 +109,7 @@ if ($_GET['trekID']) {
         var map;
 
         function initMap() {
-            var <?= $locationName ?> = {
+            var locationname = {
 
                 lat: <?= $latitude ?>,
                 lng: <?= $longitude ?>
@@ -118,12 +118,12 @@ if ($_GET['trekID']) {
 
             map = new google.maps.Map(document.getElementById('map'), {
 
-                center: <?= $locationName ?>,
+                center: locationname,
                 zoom: 8
 
             });
             var pinpoint = new google.maps.Marker({
-                position: <?= $locationName ?>,
+                position: locationname,
                 map: map
 
             });

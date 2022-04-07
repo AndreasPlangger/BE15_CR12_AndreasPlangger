@@ -161,7 +161,6 @@ mysqli_close($connect);
 
         @media only screen and (max-width: 1200px) {
             .hero-container {
-                position: absolute;
                 top: 50%;
                 left: 50%;
             }
